@@ -68,7 +68,7 @@ Output:
 Zeichnet das Hauptmenü
 ===============================================================================
 */
-int printMenuMain(void)
+void printMenuMain(void)
 {
   printLineBreaks(3);
   printWarenkorbForMenu(32);// Warenkorb anzeigen
@@ -97,8 +97,6 @@ int printMenuMain(void)
   printf("x: Ende");
   printWhitespaces(22);
   printLineBreaks(2);
-
-  return 0;
 }
 
 /*
