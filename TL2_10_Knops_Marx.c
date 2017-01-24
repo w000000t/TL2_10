@@ -53,9 +53,50 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printMenuStandartkonfiguration();
+  printMenuMain();
 
   system("pause");
+
+  return 0;
+}
+
+/*
+===============================================================================
+Funktion: printMenuMain
+Input:
+Output:
+Zeichnet das Hauptmenü
+===============================================================================
+*/
+int printMenuMain(void)
+{
+  printLineBreaks(3);
+  printWarenkorbForMenu(32);// Warenkorb anzeigen
+  printLineBreaks(2);
+
+  //Menu headline
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("P R E I S K A L K U L A T I O N");
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(31);
+  printLineBreaks(1);
+
+  // Auswahlmöglichkeiten
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("a: Standardkonfiguration");
+  printWhitespaces(22);
+  printLineBreaks(2);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("b: Einzelkomponenten");
+  printWhitespaces(22);
+  printLineBreaks(2);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("x: Ende");
+  printWhitespaces(22);
+  printLineBreaks(2);
 
   return 0;
 }
@@ -112,6 +153,8 @@ void printMenuStandartkonfiguration(void)
   printf("0: Abbruch");
   printLineBreaks(1);
 }
+
+
 
 /*
 * Funktion:   printTabs
