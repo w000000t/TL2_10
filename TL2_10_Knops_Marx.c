@@ -55,7 +55,7 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printMenuMain();
+  printMenuEinzelkomponenten();
 
   system("pause");
 
@@ -177,12 +177,25 @@ void printMenuEinzelkomponenten(void){
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
   printf("2: Mainboard");
-  printWhitespaces(23);
+  printWhitespaces(9);
   printf("%7.2f Euro", PREIS_MAINBOARD);
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
   printf("3: Multimedia Star");
+  printWhitespaces(3);
+  printf("%7.2f Euro", PREIS_MULTIMEDIA_STAR);
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("4: Office Star");
+  printWhitespaces(7);
+  printf("%7.2f Euro", PREIS_OFFICE_STAR);
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("0: Abbruch");
+  printWhitespaces(11);
   printLineBreaks(1);
 }
 
