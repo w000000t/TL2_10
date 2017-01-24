@@ -43,6 +43,8 @@ void printMenuMain(void);
 void printMenuStandartkonfiguration(void);
 void printMenuGehaeuse(void);
 void printWarenkorbForMenu(int iMaxMenuLength);
+void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVersand);
+void clearScreen(void);
 void programmExit(void);
 void printLine(int iLength);
 void printLineBreaks(int iLineBreaks);
@@ -56,7 +58,7 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printMenuGehaeuse();
+  printPreisAusgabeStandard(PREIS_CPU, 2, 0);
 
   system("pause");
 
@@ -202,6 +204,108 @@ void printMenuGehaeuse(void)
   printf("0: Abbruch");
   printLineBreaks(1);
 }
+
+/*
+===============================================================================
+* Funktion: printMenuGehaeuse
+* Input:
+* Output:
+Zeichnet das Gehäusemenü
+===============================================================================
+*/
+void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVersand)
+{
+
+  float fListenPreisGesamt=iAnzahlArtikel * fPreisArtikel,
+        fLagerkosten = fListenPreisGesamt * MULTIPL_LAGER, 
+        fMaterialKosten = fListenPreisGesamt + fLagerkosten,
+        fVerwaltungsKosten = fMaterialKosten * MULTIPL_VERWALTUNGS,
+        fSelbstKosten = fMaterialKosten + fVerwaltungsKosten,
+        fGewinn = fSelbstKosten * MULTIPL_GEWINN,
+        fBarverkaufsPreis = fSelbstKosten + fGewinn,
+        fVersandKosten = fBarverkaufsPreis * MULTIPL_VERSAND,
+        fVersandPreis = fBarverkaufsPreis + fVersandKosten;
+
+  clearScreen();
+
+  printLineBreaks(3);
+  printWarenkorbForMenu(30);// Warenkorb anzeigen
+  printLineBreaks(5);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Listenpreis pro Artikel:");
+  printWhitespaces(10);
+  printf("%7.2f Euro", fPreisArtikel);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Listenpreis gesamt:");
+  printWhitespaces(15);
+  printf("%7.2f Euro", fListenPreisGesamt);
+  printLineBreaks(1);
+
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Lagerkosten");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fLagerkosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Materialkosten:");
+  printWhitespaces(19);
+  printf("%7.2f Euro", fMaterialKosten);
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Verwaltungskosten");
+  printWhitespaces(15);
+  printf("%7.2f Euro", fVerwaltungsKosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Selbstkosten:");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fSelbstKosten);
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Gewinn");
+  printWhitespaces(26);
+  printf("%7.2f Euro", fGewinn);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  if(iVersand = 1)
+  {
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Versandpreis:");
+    printWhitespaces(21);
+    printf("%7.2f Euro",  fVersandPreis);
+  }
+}
+
+/*
+===============================================================================
+* Funktion: clearScreen
+* Input:
+* Output:
+
+Leert den Bildschirm
+===============================================================================
+*/
+void clearScreen(void)
+{
+  system("cls");
+}
+
 
 /*
 ===============================================================================
