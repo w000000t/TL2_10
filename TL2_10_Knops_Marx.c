@@ -283,7 +283,7 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
   printLine(46);
 
-  if(iVersand = 1)
+  if(iVersand == 1)
   {
     printWhitespaces(MENU_INDENTATION_WHITESPACES);
     printf("Versandpreis:");
