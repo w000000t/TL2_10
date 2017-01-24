@@ -100,11 +100,13 @@ void printMenuMain(void)
   printLineBreaks(2);
 }
 
-/*
+/******************************************************************************
 * Funktion:   printMenuStandartkonfiguration
 * Input:      -
 * Output:     -
-*/
+*
+* Die Funktion gibt das Menü für die Standardkonfigurationen aus.
+******************************************************************************/
 void printMenuStandartkonfiguration(void)
 {
   // Warenkorb
@@ -184,11 +186,13 @@ void printMenuEinzelkomponenten(void){
   printLineBreaks(1);
 }
 
-/*
+/******************************************************************************
 * Funktion:   printTabs
 * Input:      int iTabs
 * Output:     -
-*/
+*
+* Die Funktion gibt die als Parameter übergebene Anzahl an Tabs aus. ("\t").
+******************************************************************************/
 void printTabs(int iTabs)
 {
   int i;
@@ -199,11 +203,13 @@ void printTabs(int iTabs)
   }
 }
 
-/*
+/******************************************************************************
 * Funktion:   printWhitespaces
 * Input:      int iWhitespaces
 * Output:     -
-*/
+*
+* Die Funktion gibt die als Paramter übergebene Anzahl an Whitespaces aus.
+******************************************************************************/
 void printWhitespaces(int iWhitespaces)
 {
   int i;
@@ -214,11 +220,13 @@ void printWhitespaces(int iWhitespaces)
   }
 }
 
-/*
+/******************************************************************************
 * Funktion:   printWarenkorbForMenu
 * Input:      -
 * Output:     -
-*/
+*
+* Die Funktion gibt den Warenkorb am rechten Rand des Menüs aus.
+******************************************************************************/
 void printWarenkorbForMenu(int iMaxMenuLength)
 {
   int iStartPos = iMaxMenuLength + MENU_INDENTATION_WHITESPACES - 25;
@@ -230,11 +238,13 @@ void printWarenkorbForMenu(int iMaxMenuLength)
   printLineBreaks(2); // space Warenkorb <-> Menu
 }
 
-/*
+/******************************************************************************
 * Funktion:   printLineBreaks
 * Input:      int iLinebreaks
 * Output:     -
-*/
+*
+* Die Funktion gibt die als Parameter übergebene Anzahl an Linebreaks aus.("\n")
+******************************************************************************/
 void printLineBreaks(int iLinebreaks)
 {
   int i;
@@ -244,157 +254,14 @@ void printLineBreaks(int iLinebreaks)
     printf("\n");
   }
 }
-/*
+
+/******************************************************************************
 * Funktion:   printLine
 * Input:      int iLength
 * Output:     -
 *
 * Die Funktion gibt eine Linie, bestehend aus "=", mit der Länge iLength aus.
-*/
-void printLine(int iLength)
-{
-  int i;
-
-  for(i = 0; i < iLength; i++)
-  {
-    printf("=");
-  }
-
-  printf("\n");
-}
-
-/*
-===============================================================================
-* Funktion:   printMenuStandartkonfiguration
-* Input:      -
-* Output:     -
-===============================================================================
-*/
-void printMenuStandartkonfiguration(void)
-{
-  // Warenkorb
-  printLineBreaks(3);// space top
-  printWarenkorbForMenu(46);// Warenkorb anzeigen
-  printLineBreaks(2); // space Warenkorb <-> Menu
-
-  // Menu headline
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("S T A N D A R D K O N F I G U R A T I O N E N");
-  printLineBreaks(1);
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printLine(45);
-  printLineBreaks(1);
-
-  // Auswahlmöglichkeiten
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("1: Fun Star");
-  printWhitespaces(22);
-  printf("%7.2f Euro", PREIS_FUN_STAR);
-  printLineBreaks(1);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("2: High End");
-  // Leerzeichen zwischen Bezeichnung und Preis
-  printWhitespaces(22);
-  printf("%7.2f Euro", PREIS_HIGH_END);
-  printLineBreaks(1);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("3: Multimedia Star");
-  // Leerzeichen zwischen Bezeichnung und Preis
-  printWhitespaces(15);
-  printf("%7.2f Euro", PREIS_MULTIMEDIA_STAR);
-  printLineBreaks(1);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("4: Office Star");
-  // Leerzeichen zwischen Bezeichnung und Preis
-  printWhitespaces(19);
-  printf("%7.2f Euro", PREIS_OFFICE_STAR);
-  printLineBreaks(1);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("0: Abbruch");
-  printLineBreaks(1);
-}
-
-
-
-/*
-===============================================================================
-* Funktion:   printTabs
-* Input:      int iTabs
-* Output:     -
-===============================================================================
-*/
-void printTabs(int iTabs)
-{
-  int i;
-
-  for(i = 0;i < iTabs;i++)
-  {
-    printf("\t");
-  }
-}
-
-/*
-===============================================================================
-* Funktion:   printWhitespaces
-* Input:      int iWhitespaces
-* Output:     -
-===============================================================================
-*/
-void printWhitespaces(int iWhitespaces)
-{
-  int i;
-
-  for(i = 0; i < iWhitespaces; i++)
-  {
-    printf(" ");
-  }
-}
-
-/*
-===============================================================================
-* Funktion:   printWarenkorbForMenu
-* Input:      -
-* Output:     -
-===============================================================================
-*/
-void printWarenkorbForMenu(int iMaxMenuLength)
-{
-  int iStartPos = iMaxMenuLength + MENU_INDENTATION_WHITESPACES - 25;
-
-  printWhitespaces(iStartPos);
-  printf("Warenkorb: ");
-  printf("%7.2f Euro", fWarenkorb);
-}
-
-/*
-===============================================================================
-* Funktion:   printLineBreaks
-* Input:      int iLinebreaks
-* Output:     -
-===============================================================================
-*/
-void printLineBreaks(int iLinebreaks)
-{
-  int i;
-  
-  for(i = 0;i < iLinebreaks;i++)
-  {
-    printf("\n");
-  }
-}
-/*
-===============================================================================
-* Funktion:   printLine
-* Input:      int iLength
-* Output:     -
-*
-* Die Funktion gibt eine Linie, bestehend aus "=", mit der Länge iLength aus.
-===============================================================================
-*/
+******************************************************************************/
 void printLine(int iLength)
 {
   int i;
