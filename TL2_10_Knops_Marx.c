@@ -41,9 +41,8 @@
 */
 void printMenuMain(void);
 void printMenuStandartkonfiguration(void);
-void printMenuGehaeuse(void);
+void printMenuEinzelkomponenten(void);
 void printWarenkorbForMenu(int iMaxMenuLength);
-void programmExit(void);
 void printLine(int iLength);
 void printLineBreaks(int iLineBreaks);
 void printTabs(int iTabs);
@@ -56,21 +55,20 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printMenuGehaeuse();
+  printMenuMain();
 
   system("pause");
 
   return 0;
 }
 
-/*
-===============================================================================
-* Funktion: printMenuMain
-* Input:
-* Output:
-Zeichnet das Hauptmenü
-===============================================================================
-*/
+/******************************************************************************
+* Funktion:   printMenuMain
+* Input:      -
+* Output:     -
+*
+* Zeichnet das Hauptmenü
+******************************************************************************/
 void printMenuMain(void)
 {
   printLineBreaks(3);
@@ -102,19 +100,17 @@ void printMenuMain(void)
   printLineBreaks(2);
 }
 
-/*
-===============================================================================
+/******************************************************************************
 * Funktion:   printMenuStandartkonfiguration
 * Input:      -
 * Output:     -
-===============================================================================
-*/
+*
+* Die Funktion gibt das Menü für die Standardkonfigurationen aus.
+******************************************************************************/
 void printMenuStandartkonfiguration(void)
 {
   // Warenkorb
-  printLineBreaks(3);// space top
   printWarenkorbForMenu(46);// Warenkorb anzeigen
-  printLineBreaks(2); // space Warenkorb <-> Menu
 
   // Menu headline
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
@@ -157,75 +153,46 @@ void printMenuStandartkonfiguration(void)
   printLineBreaks(1);
 }
 
-/*
-===============================================================================
-* Funktion: printMenuGehaeuse
-* Input:
-* Output:
-Zeichnet das Gehäusemenü
-===============================================================================
-*/
-void printMenuGehaeuse(void)
-{
-  printLineBreaks(3);
-  printWarenkorbForMenu(30);// Warenkorb anzeigen
-  printLineBreaks(2);
+/******************************************************************************
+* Funktion:   printMenuEinzelkomponenten
+* Input:      -
+* Output:     -
+*
+* Die Funktion gibt das Menü für die Einzelkomponenten aus.
+******************************************************************************/
+void printMenuEinzelkomponenten(void){
 
-  //Menu headline
+  printWarenkorbForMenu(34);//Warenkorb anzeigen
+
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("G E H A E U S E A U S W A H L");
+  printf("E I N Z E L K O M P O N E N T E N");
   printLineBreaks(1);
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printLine(29);
-  printLineBreaks(1);
-
-  // Auswahlmöglichkeiten
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("1: Compucase LX100");
-  printWhitespaces(15);
-  printf("%7.2f Euro", PREIS_COMPU_CASE_LX100);
+  printLine(34);
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("2: Compucase LX120");
-  printWhitespaces(15);
-  printf("%7.2f Euro", PREIS_COMPU_CASE_LX120);
+  printf("1: Gehaeuse");
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("3: Compucase LX34A");
-  printWhitespaces(15);
-  printf("%7.2f Euro", PREIS_COMPU_CASE_LX34A);
+  printf("2: Mainboard");
+  printWhitespaces(23);
+  printf("%7.2f Euro", PREIS_MAINBOARD);
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("0: Abbruch");
+  printf("3: Multimedia Star");
   printLineBreaks(1);
 }
 
-/*
-===============================================================================
-* Funktion: exit
-* Input:
-* Output:
-
-Beendet das Programm
-===============================================================================
-*/
-void programmExit(void)
-{
-  
-}
-
-
-
-/*
-===============================================================================
+/******************************************************************************
 * Funktion:   printTabs
 * Input:      int iTabs
 * Output:     -
-===============================================================================
-*/
+*
+* Die Funktion gibt die als Parameter übergebene Anzahl an Tabs aus. ("\t").
+******************************************************************************/
 void printTabs(int iTabs)
 {
   int i;
@@ -236,13 +203,13 @@ void printTabs(int iTabs)
   }
 }
 
-/*
-===============================================================================
+/******************************************************************************
 * Funktion:   printWhitespaces
 * Input:      int iWhitespaces
 * Output:     -
-===============================================================================
-*/
+*
+* Die Funktion gibt die als Paramter übergebene Anzahl an Whitespaces aus.
+******************************************************************************/
 void printWhitespaces(int iWhitespaces)
 {
   int i;
@@ -253,29 +220,31 @@ void printWhitespaces(int iWhitespaces)
   }
 }
 
-/*
-===============================================================================
+/******************************************************************************
 * Funktion:   printWarenkorbForMenu
 * Input:      -
 * Output:     -
-===============================================================================
-*/
+*
+* Die Funktion gibt den Warenkorb am rechten Rand des Menüs aus.
+******************************************************************************/
 void printWarenkorbForMenu(int iMaxMenuLength)
 {
   int iStartPos = iMaxMenuLength + MENU_INDENTATION_WHITESPACES - 25;
 
+  printLineBreaks(3);// space top
   printWhitespaces(iStartPos);
   printf("Warenkorb: ");
   printf("%7.2f Euro", fWarenkorb);
+  printLineBreaks(2); // space Warenkorb <-> Menu
 }
 
-/*
-===============================================================================
+/******************************************************************************
 * Funktion:   printLineBreaks
 * Input:      int iLinebreaks
 * Output:     -
-===============================================================================
-*/
+*
+* Die Funktion gibt die als Parameter übergebene Anzahl an Linebreaks aus.("\n")
+******************************************************************************/
 void printLineBreaks(int iLinebreaks)
 {
   int i;
@@ -285,15 +254,14 @@ void printLineBreaks(int iLinebreaks)
     printf("\n");
   }
 }
-/*
-===============================================================================
+
+/******************************************************************************
 * Funktion:   printLine
 * Input:      int iLength
 * Output:     -
 *
 * Die Funktion gibt eine Linie, bestehend aus "=", mit der Länge iLength aus.
-===============================================================================
-*/
+******************************************************************************/
 void printLine(int iLength)
 {
   int i;
