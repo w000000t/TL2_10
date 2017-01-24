@@ -40,6 +40,7 @@
 * Funktionsprototypen
 */
 void printMenuStandartkonfiguration(void);
+void printMenuEinzelkomponenten(void);
 void printWarenkorbForMenu(int iMaxMenuLength);
 void printLine(int iLength);
 void printLineBreaks(int iLineBreaks);
@@ -53,63 +54,24 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printMenuMain();
+  printMenuStandartkonfiguration();
 
   system("pause");
 
   return 0;
 }
 
-/*
-===============================================================================
-Funktion: printMenuMain
-Input:
-Output:
-Zeichnet das Hauptmenü
-===============================================================================
-*/
-void printMenuMain(void)
-{
-  printLineBreaks(3);
-  printWarenkorbForMenu(32);// Warenkorb anzeigen
-  printLineBreaks(2);
-
-  //Menu headline
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("P R E I S K A L K U L A T I O N");
-  printLineBreaks(1);
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printLine(31);
-  printLineBreaks(1);
-
-  // Auswahlmöglichkeiten
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("a: Standardkonfiguration");
-  printWhitespaces(22);
-  printLineBreaks(2);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("b: Einzelkomponenten");
-  printWhitespaces(22);
-  printLineBreaks(2);
-
-  printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("x: Ende");
-  printWhitespaces(22);
-  printLineBreaks(2);
-}
-
-/*
+/******************************************************************************
 * Funktion:   printMenuStandartkonfiguration
 * Input:      -
 * Output:     -
-*/
+*
+* Die Funktion gibt das Menü für die Standardkonfigurationen aus.
+******************************************************************************/
 void printMenuStandartkonfiguration(void)
 {
   // Warenkorb
-  printLineBreaks(3);// space top
   printWarenkorbForMenu(46);// Warenkorb anzeigen
-  printLineBreaks(2); // space Warenkorb <-> Menu
 
   // Menu headline
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
@@ -152,13 +114,38 @@ void printMenuStandartkonfiguration(void)
   printLineBreaks(1);
 }
 
+/******************************************************************************
+* Funktion:   printMenuEinzelkomponenten
+* Input:      -
+* Output:     -
+******************************************************************************/
+void printMenuEinzelkomponenten(void){
 
+  printWarenkorbForMenu(34);//Warenkorb anzeigen
 
-/*
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("E I N Z E L K O M P O N E N T E N");
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(34);
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("1: Gehaeuse");
+  printLineBreaks(1);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("2: Mainboard");
+
+}
+
+/*******************************************************************************
 * Funktion:   printTabs
 * Input:      int iTabs
 * Output:     -
-*/
+*
+* Die Funktion gibt die übergebene Anzahl an Tabs aus ("\t");
+******************************************************************************/
 void printTabs(int iTabs)
 {
   int i;
@@ -169,11 +156,13 @@ void printTabs(int iTabs)
   }
 }
 
-/*
+/******************************************************************************
 * Funktion:   printWhitespaces
 * Input:      int iWhitespaces
 * Output:     -
-*/
+*
+* Die Funktion gibt die übergebene Anzahl an Whitespaces aus.
+******************************************************************************/
 void printWhitespaces(int iWhitespaces)
 {
   int i;
@@ -184,25 +173,32 @@ void printWhitespaces(int iWhitespaces)
   }
 }
 
-/*
+/******************************************************************************
 * Funktion:   printWarenkorbForMenu
 * Input:      -
 * Output:     -
-*/
+*
+* Die Funktion gibt den Warenkorb am rechten Rand des jeweiligen Menüs,
+* basierend auf der angegebenenen maximalen Menülänge aus.
+******************************************************************************/
 void printWarenkorbForMenu(int iMaxMenuLength)
 {
   int iStartPos = iMaxMenuLength + MENU_INDENTATION_WHITESPACES - 25;
 
+  printLineBreaks(3);// space top
   printWhitespaces(iStartPos);
   printf("Warenkorb: ");
   printf("%7.2f Euro", fWarenkorb);
+  printLineBreaks(2); // space Warenkorb <-> Menu
 }
 
-/*
+/******************************************************************************
 * Funktion:   printLineBreaks
 * Input:      int iLinebreaks
 * Output:     -
-*/
+*
+* Die Funktion gibt die übergebene Menge an Linebreaks ("\n") aus.
+*******************************************************************************/
 void printLineBreaks(int iLinebreaks)
 {
   int i;
@@ -212,13 +208,13 @@ void printLineBreaks(int iLinebreaks)
     printf("\n");
   }
 }
-/*
+/******************************************************************************
 * Funktion:   printLine
 * Input:      int iLength
 * Output:     -
 *
 * Die Funktion gibt eine Linie, bestehend aus "=", mit der Länge iLength aus.
-*/
+******************************************************************************/
 void printLine(int iLength)
 {
   int i;
