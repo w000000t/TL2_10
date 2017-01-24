@@ -39,6 +39,7 @@
 /*
 * Funktionsprototypen
 */
+void printMenuMain(void);
 void printMenuStandartkonfiguration(void);
 void printWarenkorbForMenu(int iMaxMenuLength);
 void printLine(int iLength);
@@ -62,9 +63,9 @@ int main(void)
 
 /*
 ===============================================================================
-Funktion: printMenuMain
-Input:
-Output:
+* Funktion: printMenuMain
+* Input:
+* Output:
 Zeichnet das Hauptmenü
 ===============================================================================
 */
@@ -100,9 +101,11 @@ void printMenuMain(void)
 }
 
 /*
+===============================================================================
 * Funktion:   printMenuStandartkonfiguration
 * Input:      -
 * Output:     -
+===============================================================================
 */
 void printMenuStandartkonfiguration(void)
 {
@@ -155,9 +158,11 @@ void printMenuStandartkonfiguration(void)
 
 
 /*
+===============================================================================
 * Funktion:   printTabs
 * Input:      int iTabs
 * Output:     -
+===============================================================================
 */
 void printTabs(int iTabs)
 {
@@ -170,9 +175,11 @@ void printTabs(int iTabs)
 }
 
 /*
+===============================================================================
 * Funktion:   printWhitespaces
 * Input:      int iWhitespaces
 * Output:     -
+===============================================================================
 */
 void printWhitespaces(int iWhitespaces)
 {
@@ -185,9 +192,11 @@ void printWhitespaces(int iWhitespaces)
 }
 
 /*
+===============================================================================
 * Funktion:   printWarenkorbForMenu
 * Input:      -
 * Output:     -
+===============================================================================
 */
 void printWarenkorbForMenu(int iMaxMenuLength)
 {
@@ -199,9 +208,11 @@ void printWarenkorbForMenu(int iMaxMenuLength)
 }
 
 /*
+===============================================================================
 * Funktion:   printLineBreaks
 * Input:      int iLinebreaks
 * Output:     -
+===============================================================================
 */
 void printLineBreaks(int iLinebreaks)
 {
@@ -213,11 +224,13 @@ void printLineBreaks(int iLinebreaks)
   }
 }
 /*
+===============================================================================
 * Funktion:   printLine
 * Input:      int iLength
 * Output:     -
 *
 * Die Funktion gibt eine Linie, bestehend aus "=", mit der Länge iLength aus.
+===============================================================================
 */
 void printLine(int iLength)
 {
