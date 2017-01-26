@@ -44,6 +44,9 @@ void printMenuStandartkonfiguration(void);
 void printMenuGehaeuse(void);
 void printWarenkorbForMenu(int iMaxMenuLength);
 void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVersand);
+void runMenuGehaeuse(void);
+void runMenuMain(void);
+void runMenuEinzelkomponenten(void);
 void clearScreen(void);
 void programmExit(void);
 void printLine(int iLength);
@@ -58,7 +61,7 @@ int main(void)
 {
   int iSuccessfullInput = 0;
 
-  printPreisAusgabeStandard(PREIS_CPU, 2, 0);
+  runMenuMain();
 
   system("pause");
 
@@ -290,6 +293,133 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
     printWhitespaces(21);
     printf("%7.2f Euro",  fVersandPreis);
   }
+}
+
+/*
+===============================================================================
+* Funktion: runMenuGehaeuse
+* Input:
+* Output:
+
+Leert den Bildschirm und zeichnet dann das Gehäusemenü. Es überprüft auch die
+Auswahl.
+===============================================================================
+*/
+
+void runMenuGehaeuse(void)
+{
+  int iAuswahl=4;
+
+  do
+  {
+    clearScreen();
+
+    printMenuGehaeuse();
+
+    printLineBreaks(1);
+
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Auswahl: ");
+    fflush(stdin);
+    scanf("%1i", &iAuswahl);
+  }
+  while (iAuswahl>=4);
+}
+
+/*
+===============================================================================
+* Funktion: runMenuStandardkonfiguration
+* Input:
+* Output:
+
+Leert den Bildschirm und zeichnet dann das Standardkonfigurationsmenü. Es
+überprüft auch die Auswahl.
+===============================================================================
+*/
+
+void runMenuStandardkonfiguration(void)
+{
+  int iAuswahl=5;
+
+  do
+  {
+    clearScreen();
+
+    //printMenuStandardkonfiguration();
+
+    printLineBreaks(1);
+
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Auswahl: ");
+    fflush(stdin);
+    scanf("%1i", &iAuswahl);
+  }
+  while (iAuswahl>=5);
+}
+
+/*
+===============================================================================
+* Funktion: runMenuEinzelkomponenten
+* Input:
+* Output:
+
+Leert den Bildschirm und zeichnet dann das Einzelkomponentenmenü. Es überprüft 
+auch die Auswahl.
+===============================================================================
+*/
+
+void runMenuEinzelkomponenten(void)
+{
+  int iAuswahl=6;
+
+  do
+  {
+    clearScreen();
+
+    //printMenuEinzelkomponenten();
+
+    printLineBreaks(1);
+
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Auswahl: ");
+    fflush(stdin);
+    scanf("%1i", &iAuswahl);
+  }
+  while (iAuswahl>=6);
+}
+
+/*
+===============================================================================
+* Funktion: runMenuMain
+* Input:
+* Output:
+
+Leert den Bildschirm und zeichnet dann das Hauptmenü. Es überprüft auch die
+Auswahl.
+===============================================================================
+*/
+
+void runMenuMain(void)
+{
+  char cAuswahl;
+  int iAuswahl;
+
+  do
+  {
+    clearScreen();
+
+    printMenuMain();
+
+    printLineBreaks(1);
+
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Auswahl: ");
+    fflush(stdin);
+    scanf("%2c", &cAuswahl);
+
+    
+  }
+  while (iAuswahl>=4);
 }
 
 /*
