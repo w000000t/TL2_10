@@ -218,7 +218,7 @@ Gibt die Preise aus.
 */
 void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVersand)
 {
-
+  //Variablen der einzelnen Kosten
   float fListenPreisGesamt=iAnzahlArtikel * fPreisArtikel,
         fLagerkosten = fListenPreisGesamt * MULTIPL_LAGER, 
         fMaterialKosten = fListenPreisGesamt + fLagerkosten,
@@ -286,6 +286,7 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
   printLine(46);
 
+  //Preis für den Versand wird berechnet, falls der Versand gewünscht ist
   if(iVersand == 1)
   {
     printWhitespaces(MENU_INDENTATION_WHITESPACES);
@@ -305,7 +306,7 @@ Gibt die Preise aus
 */
 void printPreisAusgabeEinzel(float fPreisArtikel, int iAnzahlArtikel, int iVersand, int iMontage)
 {
-
+  //Variablen der Kosten
   float fListenPreisGesamt=iAnzahlArtikel * fPreisArtikel,
         fLagerkosten = fListenPreisGesamt * MULTIPL_LAGER, 
         fMaterialKosten = fListenPreisGesamt + fLagerkosten,
@@ -353,8 +354,8 @@ void printPreisAusgabeEinzel(float fPreisArtikel, int iAnzahlArtikel, int iVersa
   printf("%7.2f Euro", fMaterialKosten);
   printLineBreaks(1);
 
+  //Es wird geprüft ob die Montage gewünscht ist und sie wird berechnet
   if(iMontage == 1)
-
   {
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
   printf("+ Fertigungskosten:");
