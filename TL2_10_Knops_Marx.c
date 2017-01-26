@@ -324,6 +324,7 @@ void runMenuGehaeuse(void)
     scanf("%1i", &iAuswahl);
   }
   while (iAuswahl>=4);
+
 }
 
 /*
@@ -388,39 +389,6 @@ void runMenuEinzelkomponenten(void)
   while (iAuswahl>=6);
 }
 
-/*
-===============================================================================
-* Funktion: runMenuMain
-* Input:
-* Output:
-
-Leert den Bildschirm und zeichnet dann das Hauptmenü. Es überprüft auch die
-Auswahl.
-===============================================================================
-*/
-
-void runMenuMain(void)
-{
-  char cAuswahl;
-  int iAuswahl;
-
-  do
-  {
-    clearScreen();
-
-    printMenuMain();
-
-    printLineBreaks(1);
-
-    printWhitespaces(MENU_INDENTATION_WHITESPACES);
-    printf("Auswahl: ");
-    fflush(stdin);
-    scanf("%2c", &cAuswahl);
-
-    
-  }
-  while (iAuswahl>=4);
-}
 
 /*
 ===============================================================================
@@ -446,6 +414,7 @@ void clearScreen(void)
 Beendet das Programm
 ===============================================================================
 */
+
 void programmExit(void)
 {
   
