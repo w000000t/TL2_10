@@ -210,10 +210,10 @@ void printMenuGehaeuse(void)
 
 /*
 ===============================================================================
-* Funktion: printMenuGehaeuse
-* Input:
+* Funktion: printPreisAusgabeStandard
+* Input: fPreisArtikel, iAnzahlArtikel, iVersand
 * Output:
-Zeichnet das Gehäusemenü
+Gibt die Preise aus.
 ===============================================================================
 */
 void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVersand)
@@ -251,7 +251,7 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
 
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("+ Lagerkosten");
+  printf("+ Lagerkosten:");
   printWhitespaces(21);
   printf("%7.2f Euro", fLagerkosten);
   printLineBreaks(1);
@@ -265,7 +265,7 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("+ Verwaltungskosten");
+  printf("+ Verwaltungskosten:");
   printWhitespaces(15);
   printf("%7.2f Euro", fVerwaltungsKosten);
   printLineBreaks(1);
@@ -279,7 +279,7 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
   printLineBreaks(1);
 
   printWhitespaces(MENU_INDENTATION_WHITESPACES);
-  printf("+ Gewinn");
+  printf("+ Gewinn:");
   printWhitespaces(26);
   printf("%7.2f Euro", fGewinn);
   printLineBreaks(1);
@@ -294,6 +294,127 @@ void printPreisAusgabeStandard(float fPreisArtikel, int iAnzahlArtikel, int iVer
     printf("%7.2f Euro",  fVersandPreis);
   }
 }
+
+/*
+===============================================================================
+* Funktion: printPreisAusgabeEinzel
+* Input: fPreisArtikel, iAnzahlArtikel, iVersand, iMontage
+* Output:
+Gibt die Preise aus
+===============================================================================
+*/
+void printPreisAusgabeEinzel(float fPreisArtikel, int iAnzahlArtikel, int iVersand, int iMontage)
+{
+
+  float fListenPreisGesamt=iAnzahlArtikel * fPreisArtikel,
+        fLagerkosten = fListenPreisGesamt * MULTIPL_LAGER, 
+        fMaterialKosten = fListenPreisGesamt + fLagerkosten,
+        fFertigungsKosten = fMaterialKosten * MULTIPL_MONTAGE,
+        fHerstellungsKosten = fMaterialKosten + fFertigungsKosten,
+        fVerwaltungsKosten = fHerstellungsKosten * MULTIPL_VERWALTUNGS,
+        fSelbstKosten = fHerstellungsKosten + fVerwaltungsKosten,
+        fGewinnKosten = fSelbstKosten * MULTIPL_GEWINN,
+        fBarverkaufsPreis = fSelbstKosten + fGewinnKosten,
+        fVersandKosten = fBarverkaufsPreis * MULTIPL_VERSAND,
+        fVersandPreis = fBarverkaufsPreis + fVersandKosten;
+
+  clearScreen();
+
+  printLineBreaks(3);
+  printWarenkorbForMenu(30);// Warenkorb anzeigen
+  printLineBreaks(5);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Listenpreis pro Artikel:");
+  printWhitespaces(10);
+  printf("%7.2f Euro", fPreisArtikel);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Listenpreis gesamt:");
+  printWhitespaces(15);
+  printf("%7.2f Euro", fListenPreisGesamt);
+  printLineBreaks(1);
+
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Lagerkosten:");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fLagerkosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Materialkosten:");
+  printWhitespaces(19);
+  printf("%7.2f Euro", fMaterialKosten);
+  printLineBreaks(1);
+
+  if(iMontage == 1)
+
+  {
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Fertigungskosten:");
+  printWhitespaces(15);
+  printf("%7.2f Euro", fFertigungsKosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Herstellungskosten:");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fHerstellungsKosten);
+  printLineBreaks(1);
+  }
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Verwaltungskosten:");
+  printWhitespaces(26);
+  printf("%7.2f Euro", fVerwaltungsKosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+   printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Selbstkosten:");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fSelbstKosten);
+  printLineBreaks(1);
+  
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("+ Gewinn:");
+  printWhitespaces(26);
+  printf("%7.2f Euro", fGewinnKosten);
+  printLineBreaks(1);
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printLine(46);
+
+  printWhitespaces(MENU_INDENTATION_WHITESPACES);
+  printf("Barverkaufspreis:");
+  printWhitespaces(21);
+  printf("%7.2f Euro", fBarverkaufsPreis);
+  printLineBreaks(1);
+
+  if(iVersand == 1)
+  {
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("+ Versandkosten:");
+    printWhitespaces(21);
+    printf("%7.2f Euro",  fVersandKosten);
+    printLineBreaks(1);
+
+    printWhitespaces(MENU_INDENTATION_WHITESPACES);
+    printf("Versandpreis:");
+    printWhitespaces(21);
+    printf("%7.2f Euro",  fVersandPreis);
+  }
+}
+
+
 
 /*
 ===============================================================================
