@@ -306,9 +306,10 @@ Auswahl.
 ===============================================================================
 */
 
-void runMenuGehaeuse(void)
+float runMenuGehaeuse(void)
 {
   int iAuswahl=4;
+  float fProduktPreis;
 
   do
   {
@@ -325,6 +326,23 @@ void runMenuGehaeuse(void)
   }
   while (iAuswahl>=4);
 
+  switch (iAuswahl)
+  {
+    case 1:
+      fProduktPreis = PREIS_COMPU_CASE_LX100;
+    break;
+    case 2:
+      fProduktPreis = PREIS_COMPU_CASE_LX120;
+    break;
+    case 3:
+      fProduktPreis = PREIS_COMPU_CASE_LX34A;
+    break;
+    default:
+      runMenuEinzelkomponenten();
+    break;
+  }
+
+  return fProduktPreis;
 }
 
 /*
@@ -338,9 +356,10 @@ Leert den Bildschirm und zeichnet dann das Standardkonfigurationsmenü. Es
 ===============================================================================
 */
 
-void runMenuStandardkonfiguration(void)
+float runMenuStandardkonfiguration(void)
 {
   int iAuswahl=5;
+  float fProduktPreis;
 
   do
   {
@@ -356,6 +375,26 @@ void runMenuStandardkonfiguration(void)
     scanf("%1i", &iAuswahl);
   }
   while (iAuswahl>=5);
+
+  switch (iAuswahl)
+  {
+    case 1:
+      fProduktPreis = PREIS_FUN_STAR;
+    break;
+    case 2:
+      fProduktPreis = PREIS_HIGH_END;
+    break;
+    case 3:
+      fProduktPreis = PREIS_MULTIMEDIA_STAR;
+    break;
+    case 4:
+      fProduktPreis = PREIS_OFFICE_STAR;
+    break;
+    default:
+      runMenuMain();
+    break;
+  }
+  return fProduktPreis;
 }
 
 /*
@@ -369,9 +408,10 @@ auch die Auswahl.
 ===============================================================================
 */
 
-void runMenuEinzelkomponenten(void)
+float runMenuEinzelkomponenten(void)
 {
   int iAuswahl=6;
+  float fProduktPreis;
 
   do
   {
